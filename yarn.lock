@@ -609,6 +609,11 @@ ieee754@^1.1.13:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
+imgbb-uploader@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/imgbb-uploader/-/imgbb-uploader-1.3.2.tgz#f77e54bec7f76b26418e1032b0628a667ed42e12"
+  integrity sha512-K1BP1wTNekddURe1xSNpVo8oeLMuxOTFoNbmOwXsQR9g8bmr2S0r5q6Qq8fSoELdG2PYYDr9bNkI12H2LOkryA==
+
 indent-string@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
