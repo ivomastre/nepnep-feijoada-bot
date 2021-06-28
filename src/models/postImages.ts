@@ -1,12 +1,11 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, SchemaType } from 'mongoose'
 
 export interface IPostImages {
-    url: string,
+    binData: Buffer,
     imageType: string
 }
-
 const PostImagesSchema = new Schema({
-    url: String,
+    binData: Buffer,
     imageType: String
 })
 

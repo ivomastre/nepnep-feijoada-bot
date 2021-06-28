@@ -9,4 +9,5 @@ const facebookBot = new Bot(FACEBOOK_ACCESS_TOKEN)
 schedule.scheduleJob('0 * * * *', async function(){
     await facebookBot.postToFacebook()
 });
+(async () => await facebookBot.postToFacebook())()
 if(NODE_ENV == 'dev') console.log('Bot has started 🐒') 
