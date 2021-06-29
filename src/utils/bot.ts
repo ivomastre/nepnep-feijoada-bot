@@ -18,7 +18,8 @@ export default class Bot {
         const image = await nodeHtmlToImage({
             html,
             content,
-            encoding: 'base64'
+            encoding: 'base64',
+            puppeteerArgs: { args: ['--no-sandbox'] }
         })
         const { image: { url: imageUrl } } = await imageUploader({
             apiKey: IMGBB_KEY,

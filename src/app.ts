@@ -6,8 +6,14 @@ import { connectDb } from './db';
 
 connectDb()
 const facebookBot = new Bot(FACEBOOK_ACCESS_TOKEN, FACEBOOK_API_VERSION)
+
 schedule.scheduleJob('0 * * * *', async function(){
-    await facebookBot.postToFacebook()
+    try {
+        await facebookBot.postToFacebook()
+    }
+    catch(err){
+        console.log(err)
+    }
 });
 
 if(NODE_ENV == 'dev') {
