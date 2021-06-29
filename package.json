@@ -18,6 +18,8 @@
     "ts-node-dev": "^1.1.6"
   },
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "tsc",
+    "start:prod": "node dist/app.js"
   }
 }

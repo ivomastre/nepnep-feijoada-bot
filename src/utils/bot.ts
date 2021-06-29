@@ -30,3 +30,4 @@ export default class Bot {
         })
     }
 }
+//https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing/#obter-um-token-de-longa-dura--o-de-acesso---p-gina
