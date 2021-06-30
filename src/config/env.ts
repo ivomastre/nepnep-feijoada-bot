@@ -9,7 +9,9 @@ declare let process: {
         DB_NAME: string,
         FACEBOOK_ID: string,
         IMGBB_KEY: string,
-        FACEBOOK_API_VERSION: string
+        FACEBOOK_API_VERSION: string,
+        AUTH_USER: string,
+        AUTH_PASSWORD: string
     }
 }
 
@@ -20,5 +22,7 @@ export const {
     DB_NAME = '',
     FACEBOOK_ID = '',
     IMGBB_KEY = '',
-    FACEBOOK_API_VERSION = '11.0'
+    FACEBOOK_API_VERSION = '11.0',
+    AUTH_USER = 'user',
+    AUTH_PASSWORD = 'pw'
 } = process.env
