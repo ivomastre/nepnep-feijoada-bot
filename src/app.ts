@@ -1,35 +1,37 @@
-import Bot from './utils/bot'
-import schedule from 'node-schedule';
-import { FACEBOOK_ACCESS_TOKEN, FACEBOOK_API_VERSION, NODE_ENV, AUTH_USER, AUTH_PASSWORD } from './config/env'
 import { connectDb } from './db';
-import http from 'http'
-import { basic } from "http-auth";
+import express, { Application } from 'express';
+import routes from './routes';
+import errorHandler from './middleware/errorHandler';
+import passport from 'passport'
+import { createBasicStrategy } from './utils/passport/basicStrategy';
+import 'express-async-errors';
+import notFoundHandler from './middleware/notFoundHandler';
 
-connectDb()
-const facebookBot = new Bot(FACEBOOK_ACCESS_TOKEN, FACEBOOK_API_VERSION)
+class App {
+  express: Application;
 
-const basicAuth = basic(
-  {
-    msg401: '401'
-  },
-  (username, password, cb) => {
-    cb(username === AUTH_USER && password === AUTH_PASSWORD);
+  constructor() {
+    this.express = express();
+    this.middlewares();
+    this.routes();
+    this.database();
   }
-);
 
-http.createServer(basicAuth.check(async (req, res)=>{
-  try{
-    await facebookBot.postToFacebook()
-    res.end(`Successfully posted on facebook`)
-  }
-  catch(err){
-    res.statusCode = 500
-    res.end(`${err.name}: ${err.message}`)
-  }
-})).listen(process.env.PORT || '8080');
+  private middlewares = (): void => {
+    this.express.use(express.json());
+  };
 
-if(NODE_ENV == 'dev') {
-    console.log('Bot has started 🐒');
-    facebookBot.postToFacebook()
+  private routes = (): void => {
+    this.express.use(routes);
+    this.express.use(passport.initialize());
+    passport.use(createBasicStrategy());
+    this.express.use(errorHandler);
+    this.express.use(notFoundHandler);
+  };
+
+  private database = async (): Promise<void> => {
+    await connectDb();
+  };
 }
 
+export default App;

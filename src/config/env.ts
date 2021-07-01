@@ -11,7 +11,8 @@ declare let process: {
         IMGBB_KEY: string,
         FACEBOOK_API_VERSION: string,
         AUTH_USER: string,
-        AUTH_PASSWORD: string
+        AUTH_PASSWORD: string,
+        PORT: string
     }
 }
 
@@ -24,5 +25,6 @@ export const {
     IMGBB_KEY = '',
     FACEBOOK_API_VERSION = '11.0',
     AUTH_USER = 'user',
-    AUTH_PASSWORD = 'pw'
+    AUTH_PASSWORD = 'pw',
+    PORT = '8080'
 } = process.env
